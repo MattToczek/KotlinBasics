@@ -1,3 +1,4 @@
+import java.util.*
 
 fun main(args : Array<String>){
     println("Hello world!")
@@ -107,7 +108,84 @@ fun main(args : Array<String>){
     for(x in tenToOne.reversed()) print("Reverse: $x      ")
     println()
 
+    var age = 2;
 
+    // when works like switch
+    when(age) {
+//      can pass in lists
+        0,1,2,3 -> println("Go to nursery")
 
+//      values
+        4 -> println("Go to reception")
+
+//      ranges
+        in 5..11 -> {
+            val year = age - 3
+            println("Go to year $year")
+        }
+        else -> println("Uni, College or Job?")
+    }
+
+//  for loop
+    for(x in 1..10){
+        println("Loop: $x")
+    }
+
+//  can import any Java library to Kotlin - java.util.Random in this instance
+    val rand = Random()
+
+//  generates number from 1-10
+    val magicNum = rand.nextInt(10) + 1
+
+//  setting up a scanner for input
+    val input = Scanner(System.`in`)
+    var guess = 0
+
+//  while loop
+//    while(guess != magicNum) {
+//        println("Guess a number between 1-10")
+//        guess = input.nextInt()
+//    }
+
+    println("Well done! The Magic Number was: $guess")
+
+    for(x in 1..20){
+        if(x % 2 == 0) {
+            //  continue ignores the rest of code below and moves on to next loop
+            continue
+        }
+
+        println("Odd: $x")
+
+//      break finishes loops
+        if(x == 15) break
+    }
+
+    var arr3: Array<Int> = arrayOf(3,6,9)
+
+    for(i in arr3.indices){
+        println("Multiples of 3: ${arr3[i]}")
+    }
+
+//    can use brackets in for loop (i, value)
+    for((index, value)in arr3.withIndex()){
+        println("Index: $index Value: $value")
+    }
+
+//  simple function - 3rd Int       VVV = return type
+    fun add(num1: Int, num2: Int) : Int = num1 + num2
+    println("5 + 4 = ${add(5,4)}")
+
+    //  doesn't need return type
+//    can add default parameter values
+    fun subtract(num1: Int = 3, num2: Int = 2) = num1 - num2
+    println("5 - 4 = ${subtract(5,4)}")
+
+//    can use named parameter to enter parameter in a different order
+    println("4 - 5 = ${subtract( num2=5, num1=4)}")
+
+//    Unit keyword replaces void as no return in methods
+    fun sayHello(name: String): Unit = println( "Hi $name")
 }
+
 //https://www.youtube.com/watch?v=H_oGi8uuDpA
