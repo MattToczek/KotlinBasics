@@ -186,6 +186,44 @@ fun main(args : Array<String>){
 
 //    Unit keyword replaces void as no return in methods
     fun sayHello(name: String): Unit = println( "Hi $name")
+
+    val multiply = {num1: Int, num2: Int -> num1 * num2}
+    println("5 * 3 = ${multiply(5,3)}")
+
+//  1. two values passed back
+    val (two, three) = nextTwo(1)
+    println("1 $two $three")
+
+//  2. pass in an array
+    println("Sum = ${getSum(1,2,3,4,5,6)}")
+
+//  3.
+    println("5 factorial = ${fact(5)}")
+
+}
+
+// 1. function returns 2x integers VVV
+fun nextTwo(num: Int ): Pair<Int, Int>{
+    return Pair(num+1, num+2)
+}
+
+// 2. function to cycle through arrays using forEach
+fun getSum(vararg nums: Int): Int {
+    var sum = 0
+
+//  and add numbers together in array
+    nums.forEach { n -> sum += n }
+
+    return sum
+}
+
+// 3. factorial recursion -> factorial 5 = 5*4*3*2*1
+fun fact(x: Int): Int{
+    tailrec fun factTail(y: Int, z: Int): Int {
+        if (y== 0) return z
+        else return factTail(y-1, y*z)
+    }
+    return factTail(x, 1)
 }
 
 //https://www.youtube.com/watch?v=H_oGi8uuDpA
